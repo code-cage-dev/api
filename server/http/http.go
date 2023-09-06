@@ -44,7 +44,7 @@ func (s *srv) Listen() error {
 		CreateHandler: func(router fiber.Router) fiber.Router {
 			router.Post("/login", s.Login)
 			router.Get("/current-user", s.cors(), auth.Check(Messages.Unauthorized), s.CurrentUser)
-			router.Get("/@:user_name", s.cors(), auth.Check(Messages.Unauthorized), s.ProfileView)
+			router.Get("/@:user_name", s.cors(), s.ProfileView)
 			return router
 		},
 	})

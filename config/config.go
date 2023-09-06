@@ -13,7 +13,6 @@ type Cors struct {
 	AllowedMethods   string `env:"CORS_ALLOWED_METHODS" envDefault:"GET,POST,PUT,DELETE,OPTIONS"`
 	AllowedHeaders   string `env:"CORS_ALLOWED_HEADERS" envDefault:"*"`
 	AllowCredentials bool   `env:"CORS_ALLOW_CREDENTIALS" envDefault:"true"`
-	Domain           string `env:"HTTP_HEADER_DOMAIN" envDefault:"*"`
 }
 
 type HttpServer struct {
