@@ -7,7 +7,9 @@ import (
 	"github.com/cilloparch/cillop/validation"
 	"github.com/code-cage-dev/api/app"
 	"github.com/code-cage-dev/api/config"
+	"github.com/code-cage-dev/api/pkg/auth"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 )
 
 type srv struct {
@@ -40,6 +42,9 @@ func (s *srv) Listen() error {
 		I18n:        s.i18n,
 		AcceptLangs: []string{},
 		CreateHandler: func(router fiber.Router) fiber.Router {
+			router.Post("/login", s.Login)
+			router.Get("/current-user", s.cors(), auth.Check(Messages.Unauthorized), s.CurrentUser)
+			router.Get("/@:user_name", s.cors(), s.ProfileView)
 			return router
 		},
 	})
@@ -56,4 +61,13 @@ func (s *srv) parseParams(ctx *fiber.Ctx, dto interface{}) {
 
 func (s *srv) parseQuery(ctx *fiber.Ctx, dto interface{}) {
 	http.ParseQuery(ctx, s.valid, *s.i18n, dto)
+}
+
+func (s *srv) cors() fiber.Handler {
+	return cors.New(cors.Config{
+		AllowOrigins:     s.config.Cors.AllowedOrigins,
+		AllowMethods:     s.config.Cors.AllowedMethods,
+		AllowHeaders:     s.config.Cors.AllowedHeaders,
+		AllowCredentials: s.config.Cors.AllowCredentials,
+	})
 }
