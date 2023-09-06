@@ -22,8 +22,10 @@ func main() {
 	valid := validation.New(i18n)
 	valid.ConnectCustom()
 	valid.RegisterTagName()
+	postgres := loadPostgres(cnf)
 	app := service.NewApp(service.Config{
 		App: cnf,
+		DB:  postgres,
 	})
 	http := http.New(http.Config{
 		Config: cnf,

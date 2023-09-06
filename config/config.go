@@ -1,5 +1,7 @@
 package config
 
+import "github.com/code-cage-dev/api/clients/github"
+
 type I18n struct {
 	Fallback string   `env:"I18N_FALLBACK_LANGUAGE" envDefault:"en"`
 	Dir      string   `env:"I18N_DIR" envDefault:"./src/locales"`
@@ -13,7 +15,7 @@ type HttpServer struct {
 
 type Postgres struct {
 	Host     string `env:"POSTGRES_HOST" envDefault:"localhost"`
-	Port     int    `env:"POSTGRES_PORT" envDefault:"5432"`
+	Port     string `env:"POSTGRES_PORT" envDefault:"5432"`
 	Database string `env:"POSTGRES_DATABASE" envDefault:"postgres"`
 	Username string `env:"POSTGRES_USERNAME" envDefault:"postgres"`
 	Password string `env:"POSTGRES_PASSWORD" envDefault:"postgres"`
@@ -25,4 +27,5 @@ type App struct {
 	I18n     I18n
 	Http     HttpServer
 	Postgres Postgres
+	Github   github.Config
 }
