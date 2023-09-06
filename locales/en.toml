@@ -1,4 +1,5 @@
 HTTP_OK = "Ok."
+HTTP_UNAUTHORIZED = "Unauthorized."
 
 error_internal_server_error = "Internal server error."
 

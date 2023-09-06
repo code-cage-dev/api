@@ -11,6 +11,8 @@ type I18n struct {
 type HttpServer struct {
 	Host string `env:"HTTP_SERVER_HOST" envDefault:"localhost"`
 	Port int    `env:"HTTP_SERVER_PORT" envDefault:"3000"`
+
+	Domain string `env:"HTTP_SERVER_DOMAIN" envDefault:"localhost"`
 }
 
 type Postgres struct {

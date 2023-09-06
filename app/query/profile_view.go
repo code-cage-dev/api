@@ -9,7 +9,7 @@ import (
 )
 
 type ProfileViewQuery struct {
-	UserName string `json:"user_name" validate:"required,min=1,max=255"`
+	UserName string `param:"user_name" validate:"required,min=1,max=255"`
 }
 
 type ProfileViewResult struct {
