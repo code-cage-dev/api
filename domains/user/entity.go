@@ -13,9 +13,11 @@ type Entity struct {
 type entityFields struct {
 	ID       string
 	GithubID string
+	Username string
 }
 
 var fields = entityFields{
 	ID:       "id",
 	GithubID: "github_id",
+	Username: "username",
 }

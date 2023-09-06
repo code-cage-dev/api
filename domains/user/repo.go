@@ -7,13 +7,12 @@ import (
 	"github.com/cilloparch/cillop/i18np"
 	"github.com/code-cage-dev/api/clients/github"
 	"github.com/code-cage-dev/api/pkg/entity"
-	"github.com/google/uuid"
 	"gorm.io/gorm"
 )
 
 type Repository interface {
 	Login(ctx context.Context, user *github.User) (*Entity, *i18np.Error)
-	Get(ctx context.Context, id uuid.UUID) (*Entity, *i18np.Error)
+	Get(ctx context.Context, username string) (*Entity, *i18np.Error)
 }
 
 type repo struct {
@@ -45,9 +44,9 @@ func (r *repo) Login(ctx context.Context, githubUser *github.User) (*Entity, *i1
 	return &user, nil
 }
 
-func (r *repo) Get(ctx context.Context, id uuid.UUID) (*Entity, *i18np.Error) {
+func (r *repo) Get(ctx context.Context, username string) (*Entity, *i18np.Error) {
 	var user Entity
-	if err := r.db.Where(fields.ID, id).First(&user).Error; err != nil {
+	if err := r.db.Where(fields.Username, username).First(&user).Error; err != nil {
 		if err == gorm.ErrRecordNotFound {
 			return nil, i18np.NewError(Msg.NotFound)
 		} else {
