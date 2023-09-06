@@ -8,6 +8,14 @@ type I18n struct {
 	Locales  []string `env:"I18N_LOCALES" envDefault:"en,tr"`
 }
 
+type Cors struct {
+	AllowedOrigins   string `env:"CORS_ALLOWED_ORIGINS" envDefault:"*"`
+	AllowedMethods   string `env:"CORS_ALLOWED_METHODS" envDefault:"GET,POST,PUT,DELETE,OPTIONS"`
+	AllowedHeaders   string `env:"CORS_ALLOWED_HEADERS" envDefault:"*"`
+	AllowCredentials bool   `env:"CORS_ALLOW_CREDENTIALS" envDefault:"true"`
+	Domain           string `env:"HTTP_HEADER_DOMAIN" envDefault:"*"`
+}
+
 type HttpServer struct {
 	Host string `env:"HTTP_SERVER_HOST" envDefault:"localhost"`
 	Port int    `env:"HTTP_SERVER_PORT" envDefault:"3000"`
@@ -30,4 +38,5 @@ type App struct {
 	Http     HttpServer
 	Postgres Postgres
 	Github   github.Config
+	Cors     Cors
 }

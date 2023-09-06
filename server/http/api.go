@@ -30,10 +30,7 @@ func (s *srv) Login(ctx *fiber.Ctx) error {
 }
 
 func (s *srv) CurrentUser(ctx *fiber.Ctx) error {
-	token := ctx.Cookies("access_token")
-	if token == "" {
-		return result.Error(Messages.Unauthorized, fiber.StatusUnauthorized)
-	}
+	token := ctx.Locals("token").(string)
 	res, err := s.app.Queries.CurrentUser.Handle(ctx.Context(), query.CurrentUserQuery{
 		Token: token,
 	})
