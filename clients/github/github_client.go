@@ -16,6 +16,7 @@ type User struct {
 	AvatarURL string `json:"avatar_url"`
 	Email     string `json:"email"`
 	Name      string `json:"name"`
+	Token     string `json:"-"`
 }
 
 type AccessRequest struct {
@@ -61,7 +62,12 @@ func (c *client) Access(ctx context.Context, req *AccessRequest) (*User, *i18np.
 		})
 	}
 	client := c.config.Client(ctx, token)
-	return c.currentUser(ctx, client)
+	user, error := c.currentUser(ctx, client)
+	if error != nil {
+		return nil, error
+	}
+	user.Token = token.AccessToken
+	return user, nil
 }
 
 func (c *client) CurrentUser(ctx context.Context, token string) (*User, *i18np.Error) {
