@@ -17,6 +17,8 @@ type Postgres struct {
 	Database string `env:"POSTGRES_DATABASE" envDefault:"postgres"`
 	Username string `env:"POSTGRES_USERNAME" envDefault:"postgres"`
 	Password string `env:"POSTGRES_PASSWORD" envDefault:"postgres"`
+	Migrate  bool   `env:"POSTGRES_MIGRATE" envDefault:"true"`
+	Seed     bool   `env:"POSTGRES_SEED" envDefault:"true"`
 }
 
 type App struct {
