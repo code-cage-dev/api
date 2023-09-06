@@ -2,7 +2,6 @@ package command
 
 import (
 	"context"
-	"strconv"
 
 	"github.com/cilloparch/cillop/cqrs"
 	"github.com/cilloparch/cillop/i18np"
@@ -41,7 +40,7 @@ func (h *loginHandler) Handle(ctx context.Context, cmd LoginCmd) (*LoginResult, 
 	if err != nil {
 		return nil, err
 	}
-	res, err := h.repo.Login(ctx, strconv.Itoa(user.ID), user.Login)
+	res, err := h.repo.Login(ctx, user)
 	if err != nil {
 		return nil, err
 	}
