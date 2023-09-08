@@ -14,6 +14,7 @@ type Commands struct {
 	Login           command.LoginHandler
 	ChallengeCreate command.ChallengeCreateHandler
 	ChallengeUpdate command.ChallengeUpdateHandler
+	ChallengeDelete command.ChallengeDeleteHandler
 }
 
 type Queries struct {

@@ -28,6 +28,7 @@ func NewApp(config Config) app.Application {
 			Login:           command.NewLoginHandler(userRepo, githubClient),
 			ChallengeCreate: command.NewChallengeCreateHandler(challengeRepo),
 			ChallengeUpdate: command.NewChallengeUpdateHandler(challengeRepo),
+			ChallengeDelete: command.NewChallengeDeleteHandler(challengeRepo),
 		},
 		Queries: app.Queries{
 			CurrentUser: query.NewCurrentUserHandler(githubClient),
