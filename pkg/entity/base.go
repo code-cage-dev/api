@@ -21,3 +21,9 @@ func DefaultBase() Base {
 		DeletedAt: time.Time{},
 	}
 }
+
+func UpdateBase() Base {
+	return Base{
+		UpdatedAt: time.Now(),
+	}
+}
