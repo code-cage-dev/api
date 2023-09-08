@@ -20,6 +20,7 @@ type Commands struct {
 }
 
 type Queries struct {
-	CurrentUser query.CurrentUserHandler
-	ProfileView query.ProfileViewHandler
+	CurrentUser   query.CurrentUserHandler
+	ProfileView   query.ProfileViewHandler
+	ChallengeView query.ChallengeViewHandler
 }

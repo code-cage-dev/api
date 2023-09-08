@@ -25,6 +25,10 @@ const (
 	Master DifficultyLevel = "master"
 )
 
+func (d DifficultyLevel) String() string {
+	return string(d)
+}
+
 type entityFields struct {
 	ID                  string
 	CreatedBy           string

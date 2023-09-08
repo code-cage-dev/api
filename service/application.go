@@ -33,8 +33,9 @@ func NewApp(config Config) app.Application {
 			ChallengeMarkPublic:  command.NewChallengeMarkPublicHandler(challengeRepo),
 		},
 		Queries: app.Queries{
-			CurrentUser: query.NewCurrentUserHandler(githubClient),
-			ProfileView: query.NewProfileViewHandler(userRepo),
+			CurrentUser:   query.NewCurrentUserHandler(githubClient),
+			ProfileView:   query.NewProfileViewHandler(userRepo),
+			ChallengeView: query.NewChallengeViewHandler(challengeRepo),
 		},
 	}
 }
