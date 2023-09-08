@@ -7,9 +7,18 @@ import (
 
 type Entity struct {
 	entity.Base
-	CreatedBy         uuid.UUID `json:"created_by"`
-	Title             string    `json:"title"`
-	Description       string    `json:"description"`
-	DifficultyLevel   string    `json:"difficulty_level"`
-	PreferredLanguage string    `json:"preferred_language"`
+	CreatedBy           uuid.UUID       `json:"created_by" gorm:"type:uuid"`
+	PreferredLanguageID uuid.UUID       `json:"preferred_language_id" gorm:"type:uuid"`
+	Title               string          `json:"title" gorm:"type:varchar(255)"`
+	Description         string          `json:"description" gorm:"type:text"`
+	DifficultyLevel     DifficultyLevel `json:"difficulty_level" gorm:"type:ENUM('easy', 'medium', 'hard', 'master')"`
 }
+
+type DifficultyLevel string
+
+const (
+	Easy   DifficultyLevel = "easy"
+	Medium DifficultyLevel = "medium"
+	Hard   DifficultyLevel = "hard"
+	Master DifficultyLevel = "master"
+)
