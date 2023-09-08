@@ -7,8 +7,11 @@ error_internal_server_error = "Internal server error."
 user_failed = "User failed."
 user_not_found = "User not found."
 
-# Github Module
+# Challenge Module
+challenge_not_found = "Challenge not found."
+challenge_failed = "Challenge failed."
 
+# Github Module
 github_state_invalid = "invalid oauth state, expected {{.DefaultState}}, got {{.State}}"
 github_code_exchange_failed = "code exchange failed: {{.Err}}"
 github_get_user_info_failed = "failed to get user info: {{.Err}}"

@@ -12,6 +12,7 @@ type Entity struct {
 	Title               string          `json:"title" gorm:"type:varchar(255)"`
 	Description         string          `json:"description" gorm:"type:text"`
 	DifficultyLevel     DifficultyLevel `json:"difficulty_level" gorm:"type:ENUM('easy', 'medium', 'hard', 'master')"`
+	IsPublic            *bool           `json:"is_public" gorm:"type:boolean;default:false"`
 }
 
 type DifficultyLevel string
