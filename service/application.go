@@ -25,10 +25,12 @@ func NewApp(config Config) app.Application {
 
 	return app.Application{
 		Commands: app.Commands{
-			Login:           command.NewLoginHandler(userRepo, githubClient),
-			ChallengeCreate: command.NewChallengeCreateHandler(challengeRepo),
-			ChallengeUpdate: command.NewChallengeUpdateHandler(challengeRepo),
-			ChallengeDelete: command.NewChallengeDeleteHandler(challengeRepo),
+			Login:                command.NewLoginHandler(userRepo, githubClient),
+			ChallengeCreate:      command.NewChallengeCreateHandler(challengeRepo),
+			ChallengeUpdate:      command.NewChallengeUpdateHandler(challengeRepo),
+			ChallengeDelete:      command.NewChallengeDeleteHandler(challengeRepo),
+			ChallengeMarkPrivate: command.NewChallengeMarkPrivateHandler(challengeRepo),
+			ChallengeMarkPublic:  command.NewChallengeMarkPublicHandler(challengeRepo),
 		},
 		Queries: app.Queries{
 			CurrentUser: query.NewCurrentUserHandler(githubClient),

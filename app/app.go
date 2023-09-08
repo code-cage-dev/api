@@ -11,10 +11,12 @@ type Application struct {
 }
 
 type Commands struct {
-	Login           command.LoginHandler
-	ChallengeCreate command.ChallengeCreateHandler
-	ChallengeUpdate command.ChallengeUpdateHandler
-	ChallengeDelete command.ChallengeDeleteHandler
+	Login                command.LoginHandler
+	ChallengeCreate      command.ChallengeCreateHandler
+	ChallengeUpdate      command.ChallengeUpdateHandler
+	ChallengeDelete      command.ChallengeDeleteHandler
+	ChallengeMarkPrivate command.ChallengeMarkPrivateHandler
+	ChallengeMarkPublic  command.ChallengeMarkPublicHandler
 }
 
 type Queries struct {
