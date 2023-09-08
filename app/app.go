@@ -13,6 +13,7 @@ type Application struct {
 type Commands struct {
 	Login           command.LoginHandler
 	ChallengeCreate command.ChallengeCreateHandler
+	ChallengeUpdate command.ChallengeUpdateHandler
 }
 
 type Queries struct {

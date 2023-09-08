@@ -13,7 +13,7 @@ import (
 type Repository interface {
 	Filter(ctx context.Context, filter Filter, listConfig list.Config) (*list.Result[*Entity], *i18np.Error)
 	Create(ctx context.Context, entity *Entity) *i18np.Error
-	Update(ctx context.Context, entity *Entity) *i18np.Error
+	Update(ctx context.Context, id uuid.UUID, userID uuid.UUID, entity *Entity) *i18np.Error
 	Delete(ctx context.Context, id uuid.UUID) *i18np.Error
 	View(ctx context.Context, slug string, userID uuid.UUID) (*Entity, *i18np.Error)
 	MarkPublic(ctx context.Context, id uuid.UUID, userID uuid.UUID) *i18np.Error
@@ -72,8 +72,8 @@ func (r *repo) Create(ctx context.Context, entity *Entity) *i18np.Error {
 	return nil
 }
 
-func (r *repo) Update(ctx context.Context, entity *Entity) *i18np.Error {
-	if err := r.db.Save(entity).Error; err != nil {
+func (r *repo) Update(ctx context.Context, id uuid.UUID, userID uuid.UUID, entity *Entity) *i18np.Error {
+	if err := r.db.Where(fields.CreatedBy+" = ?", userID).Where(fields.ID+" = ?", id).Save(entity).Error; err != nil {
 		return r.parseErr(err)
 	}
 	return nil
