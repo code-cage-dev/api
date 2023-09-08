@@ -6,6 +6,7 @@ import (
 	"github.com/code-cage-dev/api/app/query"
 	"github.com/code-cage-dev/api/clients/github"
 	"github.com/code-cage-dev/api/config"
+	"github.com/code-cage-dev/api/domains/challenge"
 	"github.com/code-cage-dev/api/domains/user"
 	"gorm.io/gorm"
 )
@@ -20,9 +21,12 @@ func NewApp(config Config) app.Application {
 
 	userRepo := user.NewRepo(config.DB)
 
+	challengeRepo := challenge.NewRepo(config.DB)
+
 	return app.Application{
 		Commands: app.Commands{
-			Login: command.NewLoginHandler(userRepo, githubClient),
+			Login:           command.NewLoginHandler(userRepo, githubClient),
+			ChallengeCreate: command.NewChallengeCreateHandler(challengeRepo),
 		},
 		Queries: app.Queries{
 			CurrentUser: query.NewCurrentUserHandler(githubClient),

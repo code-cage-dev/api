@@ -11,7 +11,8 @@ type Application struct {
 }
 
 type Commands struct {
-	Login command.LoginHandler
+	Login           command.LoginHandler
+	ChallengeCreate command.ChallengeCreateHandler
 }
 
 type Queries struct {

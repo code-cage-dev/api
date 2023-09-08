@@ -6,6 +6,7 @@ require (
 	github.com/cilloparch/cillop v0.0.2
 	github.com/gofiber/fiber/v2 v2.49.1
 	github.com/google/uuid v1.3.1
+	github.com/ssibrahimbas/slug v0.0.0-20230331230816-02d7d0a3cbee
 	golang.org/x/oauth2 v0.12.0
 	gorm.io/driver/postgres v1.5.2
 	gorm.io/gorm v1.25.4
