@@ -26,6 +26,7 @@ const (
 )
 
 type entityFields struct {
+	ID                  string
 	CreatedBy           string
 	PreferredLanguageID string
 	Title               string
@@ -36,6 +37,7 @@ type entityFields struct {
 }
 
 var fields = entityFields{
+	ID:                  "id",
 	CreatedBy:           "created_by",
 	PreferredLanguageID: "preferred_language_id",
 	Title:               "title",
